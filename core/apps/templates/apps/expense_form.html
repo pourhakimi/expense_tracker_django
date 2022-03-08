@@ -1,0 +1,38 @@
+{% extends "apps/base.html" %}
+{% load crispy_forms_tags %}
+{% block content%}
+<style>
+.mb-3{
+    max-width: 100%;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+</style>
+<form action="" method="post" autocomplete="off" style="padding-top: 35px;">
+    {%csrf_token%}
+    {{form.description|as_crispy_field}}
+    {{form.expense_type|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-6">
+            {{form.amount|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.transaction|as_crispy_field}}
+        </div>
+        <div class="container">
+            <div class="row justify-content-end" style="column-gap: 30px; padding-right: 15px; padding-top: 30px;">
+                <div class="col-1">
+                  <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                </div>
+                <div class="col-3">
+                    <a href="{% url 'expense_list' %}" class="btn btn-outline-dark">Show List
+                        <i class="fa-solid fa-arrow-right-long"></i>                
+                    </a>
+                </div>
+              </div>
+        </div>
+    </div>
+</form>
+{% endblock content%}
+
